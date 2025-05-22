@@ -1,0 +1,244 @@
+{
+  "chapter1": [
+      {
+          "question": "What is the correct phonetic transcription of 'flight'?",
+          "answers": [
+              { "text": "/flɪt/", "correct": false },
+              { "text": "/flaɪt/ ", "correct": true },
+              { "text": "/flaɪd/", "correct": false },
+              { "text": "/flæt/", "correct": false } 
+          ]
+      },
+      {
+          "question": "What is the correct phonetic transcription of 'judge'?",
+          "answers": [
+            { "text": "/dʒudʒ/", "correct": false },
+            { "text": "/ʤʌg/", "correct": false },
+            { "text": "/ʤəʤ/", "correct": false },
+            { "text": "/dʒʌdʒ/", "correct": true }
+          ]
+      },
+      {
+        "question": "What is the correct phonetic transcription of 'attract'?",
+        "answers": [
+            { "text": "/ætrækt/", "correct": false },
+            { "text": "/əˈtræk/", "correct": false },
+            { "text": "/atrəkt/", "correct": false },
+            { "text": "/əˈtrækt/", "correct": true }
+        ]
+    },
+    {
+        "question": "What is the correct phonetic transcription of 'develop'?",
+        "answers": [
+            { "text": "/dɪˈveləp/", "correct": true },
+            { "text": "/də'vɛləp/", "correct": false },
+            { "text": "/dəˈveləp/", "correct": false },
+            { "text": "/devələp/", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the correct phonetic transcription of 'delete'?",
+        "answers": [
+            { "text": "/dɪˈlet/", "correct": false },
+            { "text": "/dəˈliːt/", "correct": false },
+            { "text": "/dɪˈliːt/", "correct": true },
+            { "text": "/delɪt/", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the correct phonetic transcription of 'engineer'?",
+        "answers": [
+            { "text": "/endʒɪˈnɪə/ ", "correct": true },
+            { "text": "/ɛnˈdʒɪnɪr/", "correct": false },
+            { "text": "/ɛnʒɪnɪə/", "correct": false },
+            { "text": "/ˈendʒnɪər/", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the correct phonetic transcription of 'develop'?",
+        "answers": [
+            { "text": "/dɪˈveləp/", "correct": true },
+            { "text": "/də'vɛləp/", "correct": false },
+            { "text": "/dəˈveləp/", "correct": false },
+            { "text": "/devələp/", "correct": false }
+        ]
+    },
+    {
+        "question": "What sound does 'zoo' start with?",
+        "answers": [
+            { "text": "/ʃ/", "correct":false  },
+            { "text": "/z/", "correct": true },
+            { "text": "/s/", "correct": false },
+            { "text": "/ʒ", "correct": false }
+        ]
+    },
+    {
+        "question": "Which phonetic symbol represents the initial sound in 'jam'?",
+        "answers": [
+            { "text": "/ʤ/", "correct": true },
+            { "text": "/ʒ/", "correct": false },
+            { "text": "/ʧ/", "correct": false },
+            { "text": "/dʒ/", "correct": false }
+        ]
+    },
+    {
+        "question": "Which of the following contains /ŋ/?",
+        "answers": [
+            { "text": "ban", "correct": false },
+            { "text": "bang", "correct": false },
+            { "text": "bank", "correct": true },
+            { "text": "back", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the correct IPA transcription of 'Catch'?",
+        "answers": [
+            { "text": "/kaʧ/", "correct": false },
+            { "text": "/kʰætʃ/", "correct": false },
+            { "text": "/kætʃ/", "correct": true },
+            { "text": "/katʃ/", "correct": false }
+        ]
+    },
+    {
+        "question": "Choose the IPA transcription for 'Thick':",
+        "answers": [
+            { "text": "/ðɪk/", "correct": false },
+            { "text": "/θɪk/", "correct": true },
+            { "text": "/tɪk/", "correct": false },
+            { "text": "/θiːk/", "correct": false }
+        ]
+    },
+    {
+        "question": "/ˈrɒŋ/ is the IPA for: ",
+        "answers": [
+            { "text": "Run", "correct": false },
+            { "text": "Rung", "correct": false },
+            { "text": "Wrong", "correct": true},
+            { "text": "Rang", "correct": false }
+        ]
+    },
+        {
+          "question": "Which of the following starts with /j/?",
+          "answers": [
+            { "text": "yarn", "correct": true },
+            { "text": "barn", "correct": false },
+            { "text": "horn", "correct": false },
+            { "text": "worn", "correct": false }
+          ]
+        },
+        {
+          "question": "What is the IPA transcription for 'Teacher':",
+          "answers": [
+            { "text": "/tiːʧə/", "correct": false },
+            { "text": "/tʰiːʧər/", "correct": false },
+            { "text": "/tʃɪːtʃər/", "correct": false },
+            { "text": "/tʰiːtʃə/", "correct": true }
+          ]
+        },
+        {
+            "question": "What is the first consonant in \"man\"?",
+            "answers": [
+              { "text": "/n/", "correct": false },
+              { "text": "/m/", "correct": true },
+              { "text": "/ŋ/", "correct": false },
+              { "text": "/l/", "correct": false }
+            ]
+          } ,
+          
+            {
+              "question": "What is the correct phonetic transcription of \"uncle\"?",
+              "answers": [
+                { "text": "/ʌnkl/", "correct": false },
+                { "text": "/ˈʌŋkl/", "correct": true },
+                { "text": "/ʌŋkəl/", "correct": false },
+                { "text": "/əŋkl/", "correct": false }
+              ]
+            },
+            {
+              "question": "What is the correct phonetic transcription of \"canteen\"?",
+              "answers": [
+                { "text": "/kænˈtiːn/", "correct": true },
+                { "text": "/kæntɪn/", "correct": false },
+                { "text": "/ˈkæntin/", "correct": false },
+                { "text": "/kanˈtiːn/", "correct": false }
+              ]
+            },
+            {
+              "question": "What is the correct phonetic transcription of \"seat\"?",
+              "answers": [
+                { "text": "/set/", "correct": false },
+                { "text": "/siːt/", "correct": true },
+                { "text": "/sɪt/", "correct": false },
+                { "text": "/sæt/", "correct": false }
+              ]
+            },
+            {
+                "question": "The word \"dam\" begins with which sound?",
+                "answers": [
+                  { "text": "/b/", "correct": false },
+                  { "text": "/t/", "correct": false },
+                  { "text": "/d/", "correct": true },
+                  { "text": "/g/", "correct": false }
+                ]
+              }        
+  ],
+  "chapter2": [
+      {
+        
+            "question": "What is the difference in final sounds between advice and advise?",
+            "answers": [
+              { "text": "Both end in /s/", "correct": false },
+              { "text": "Advice ends in /s/, advise ends in /z/", "correct": true },
+              { "text": "Advice ends in /z/, advise ends in /s/", "correct": false },
+              { "text": "Both end in /z/", "correct": false }
+            ]  
+      },
+      
+        {
+          "question": "Which transcription is correct for affect and effect?",
+          "answers": [
+            { "text": "/əˈfekt/, /ɪˈfekt/", "correct": true },
+            { "text": "/əˈfɛkt/, /ɛˈfɛkt/", "correct": false },
+            { "text": "/æfekt/, /ifekt/", "correct": false },
+            { "text": "/ʌfekt/, /əfekt/", "correct": false }
+          ]
+        },
+        {
+          "question": "What sound distinguishes close (verb) and clothes?",
+          "answers": [
+            { "text": "/t/ vs /θ/", "correct": false },
+            { "text": "/s/ vs /ðz/", "correct": true },
+            { "text": "/s/ vs /z/", "correct": false },
+            { "text": "/z/ vs /s/", "correct": false }
+          ]
+        },
+        {
+          "question": "Which of the following best describes the difference in pronunciation between floor and flour?",
+          "answers": [
+            { "text": "/flɔː/ vs /flaʊə/", "correct": false },
+            { "text": "No difference: both are pronounced /flɔː/", "correct": true },
+            { "text": "/fluːr/ vs /flʌr/", "correct": false },
+            { "text": "/flɔː/ vs /fləʊr/", "correct": false }
+          ]
+        }, 
+            {
+              "question": "Choose the correct transcription for axe and acts:",
+              "answers": [
+                { "text": "/æks/, /ækts/", "correct": true },
+                { "text": "/aks/, /axts/", "correct": false },
+                { "text": "/æks/, /æts/", "correct": false },
+                { "text": "/æks/, /ækt/", "correct": false }
+              ]
+            },
+            {
+              "question": "What distinguishes formerly and formally in pronunciation?",
+              "answers": [
+                { "text": "Vowel stress", "correct": false },
+                { "text": "Final syllable", "correct": false },
+                { "text": "They are homophones – pronounced the same", "correct": true },
+                { "text": "One is longer", "correct": false }
+              ]
+            }   
+      
+  ]
+}

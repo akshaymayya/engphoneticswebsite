@@ -1,0 +1,93 @@
+{
+	"folders": [
+				  {
+					"path": "."
+				  },
+				  {
+					"path": "../../../Downloads/english-phonetics-website/phonetics"
+				  },
+				  {
+					"path": "../../../Downloads/english-phonetics-website/quiz-app"
+				  },
+				  {
+					"path": "../../../Downloads/english-phonetics-website/Flashcard App" 
+				  }
+				
+	],
+	"settings":
+	{
+		"liveServer.settings.multiRootWorkspaceName": "javacodespract"
+	}
+}
+
+
+
+
+
+/*/*Sure! Here's a normal, simple explanation of what your code does:
+
+---
+
+ What is this code?
+
+This is a basic HTML web page for learning English phonetics. When you open this page in a browser, it shows:
+
+* A big welcome message
+* A short description
+* Three buttons (links) that take you to different parts of the learning site
+
+
+
+### What are the parts?
+
+1. **HTML structure**
+   The page is written using HTML. It has two main parts:
+
+   * `<head>`: Sets up the title and the styles (how the page looks)
+   * `<body>`: Holds the content that the user sees (text and buttons)
+
+2. **CSS styling**
+   Inside the `<style>` tag, there is CSS that:
+
+   * Gives the page a colorful background
+   * Centers everything on the screen
+   * Styles the buttons (color, padding, hover effect)
+
+3. **Page content**
+
+   * The `<h1>` tag shows the title: **"Welcome to English Phonetics Learning"**
+   * The `<p>` tag gives a short instruction
+   * There are **three buttons** (`<a>` tags styled as buttons) that link to:
+
+     * A phonetic symbols guide
+     * A quiz app
+     * A flashcard app       */
+
+---
+
+/*What happens when someone uses it?
+
+* They see a nice background with centered text.
+* They read the welcome message.
+* They click a button to go to a different learning tool.
+
+---
+
+Would you like me to explain what each line of code does?
+
+Sure! explanation of project workspace configuration code:
+
+---
+
+This code is a **VS Code workspace configuration** file for your **English Phonetics Learning project**. It helps you manage multiple parts of your project in one place by adding different folders to the workspace. These folders include:
+
+1. The main project folder (represented by `"."`)
+2. The **Phonetics** section
+3. The **Quiz App**
+4. The **Flashcard App**
+
+By including these folders, VS Code lets you switch between them easily and work on all parts of your project together.
+
+The `"settings"` part of the code is used to configure **Live Server**, a popular VS Code extension that lets you preview web pages in your browser. It sets a name for your multi-folder project in Live Server as **"javacodespract"**, so you can run and test any part of your project directly in the browser without needing to open each folder separately.
+
+This setup is very helpful for organizing your full project in one workspace and improving your development workflow.##*/
