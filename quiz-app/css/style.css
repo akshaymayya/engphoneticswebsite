@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 *{
   margin: 0;
   padding: 0;
@@ -70,7 +70,7 @@ body{
 }
 .incorrect{
   background: rgb(243, 70, 70);
-=======
+
 *{
   margin: 0;
   padding: 0;
@@ -142,5 +142,4 @@ body{
 }
 .incorrect{
   background: rgb(243, 70, 70);
->>>>>>> 75883fbdb5cdb1e9037d0483b01a39c5dc00374e
-}
+}}
