@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+
+body {
+  background:url('../Phonetic.png');
+  background-size: cover; 
+    background-position: center;
+    background-attachment: fixed; 
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+/* Main container */
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+h1 {
+  font-size: 28px;
+  margin-bottom: px;
+}
+
+/* Quiz buttons */
+.quiz-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quiz-btn {
+  display: block;
+  background: #fff;
+  color: #001e4d;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.quiz-btn:hover {
+  background: #003366;
+  color: white;
+}
