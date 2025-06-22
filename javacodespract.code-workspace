@@ -4,7 +4,11 @@
 					"path": "."
 				  },
 				  {
+<<<<<<< HEAD
 					"path": "../../../Downloads/english-phonetics-website/phonetic-symbols(1)"
+=======
+					"path": "../../../Downloads/english-phonetics-website/phonetics"
+>>>>>>> 75883fbdb5cdb1e9037d0483b01a39c5dc00374e
 				  },
 				  {
 					"path": "../../../Downloads/english-phonetics-website/quiz-app"
@@ -63,7 +67,11 @@ This is a basic HTML web page for learning English phonetics. When you open this
      * A quiz app
      * A flashcard app       */
 
+<<<<<<< HEAD
 
+=======
+---
+>>>>>>> 75883fbdb5cdb1e9037d0483b01a39c5dc00374e
 
 /*What happens when someone uses it?
 
@@ -91,7 +99,10 @@ By including these folders, VS Code lets you switch between them easily and work
 The `"settings"` part of the code is used to configure **Live Server**, a popular VS Code extension that lets you preview web pages in your browser. It sets a name for your multi-folder project in Live Server as **"javacodespract"**, so you can run and test any part of your project directly in the browser without needing to open each folder separately.
 
 This setup is very helpful for organizing your full project in one workspace and improving your development workflow.##*/
+<<<<<<< HEAD
   
 
 
 
+=======
+>>>>>>> 75883fbdb5cdb1e9037d0483b01a39c5dc00374e
