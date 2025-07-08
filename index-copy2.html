@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Phonetics Learning</title>
+  <style>
+    /* Main Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary-color: #6506cc;
+      --secondary-color: #0874e0;
+      --accent-color: #fc39ff;
+      --accent-blue: #6ef3ff;
+      --text-color: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --glow-color: rgba(110, 243, 255, 0.5);
+      --pink-glow: rgba(252, 57, 255, 0.5);
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+      text-align: center;
+      background: linear-gradient(135deg, #0c0620, #1a0f2e, #24124a);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      perspective: 1000px;
+      cursor: default;
+    }
+
+    /* 3D Floating Shapes */
+    .shape {
+      position: absolute;
+      opacity: 0.5;
+      z-index: 1;
+      pointer-events: none;
+      filter: blur(1px);
+      transition: transform 0.8s ease-out;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 50px solid var(--pink-glow);
+      box-shadow: 0 0 20px var(--pink-glow);
+    }
+
+    .gem {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-blue);
+      transform: rotate(45deg);
+      box-shadow: 0 0 20px var(--glow-color);
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      box-shadow: 0 0 15px var(--pink-glow);
+    }
+
+    /* Background Animation */
+    #particles-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: var(--glow-color);
+      box-shadow: 0 0 10px 2px var(--glow-color);
+      opacity: 0.6;
+      z-index: 1;
+      transition: transform 0.3s ease-out, opacity 0.3s ease;
+    }
+
+    /* Cursor-following Phonetic Symbols */
+    .cursor-follower {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 2rem;
+      z-index: 2;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 0 0 8px var(--glow-color);
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out, opacity 0.2s ease;
+    }
+
+    /* Floating Phonetic Symbols */
+    .floating-symbol {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 2rem;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 0 0 8px var(--glow-color);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease-out;
+    }
+
+    /* Content Container */
+    .content-container {
+      position: relative;
+      z-index: 10;
+      width: 90%;
+      max-width: 800px;
+      padding: 40px;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease-out;
+    }
+
+    /* Header */
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #fc39ff, #6ef3ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(110, 243, 255, 0.3);
+      animation: pulse 3s infinite;
+      position: relative;
+      transition: transform 0.3s ease-out;
+    }
+
+    h1:after {
+      content: "Technology Are Gems";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #fc39ff, #6ef3ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: blur(8px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+
+    /* Subtitle */
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 50px;
+      color: rgba(255, 255, 255, 0.8);
+      transition: transform 0.3s ease-out;
+    }
+
+    /* Button Container */
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+      transform-style: preserve-3d;
+    }
+
+    /* Glassmorphism Button */
+    .glass-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transform: perspective(1000px) translateZ(0);
+    }
+
+    .glass-button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    .glass-button:hover:before {
+      left: 100%;
+    }
+
+    .glass-button:hover {
+      transform: perspective(1000px) translateY(-10px) translateZ(20px);
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2), 
+        0 0 15px var(--glow-color),
+        0 0 30px var(--pink-glow);
+      border: 1px solid rgba(110, 243, 255, 0.5);
+    }
+
+    .glass-button:active {
+      transform: perspective(1000px) translateY(-5px) translateZ(10px) scale(0.95);
+    }
+
+    /* Button Glow Effect */
+    .glass-button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      border-radius: 20px;
+      box-shadow: 0 0 30px 5px var(--accent-blue);
+      transition: opacity 0.3s ease;
+    }
+
+    .glass-button:hover::after {
+      opacity: 1;
+    }
+
+    /* Button Icon */
+    .button-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+      transition: all 0.3s ease;
+      position: relative;
+      text-shadow: 0 0 10px var(--pink-glow);
+      transform-style: preserve-3d;
+    }
+
+    .glass-button:hover .button-icon {
+      transform: scale(1.2) translateZ(20px);
+      color: #6ef3ff;
+      text-shadow: 0 0 20px var(--glow-color);
+    }
+
+    /* Button Text */
+    .button-text {
+      font-size: 1.2rem;
+      font-weight: 500;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: all 0.3s ease;
+    }
+
+    .glass-button:hover .button-text {
+      transform: translateZ(15px);
+      text-shadow: 0 0 10px var(--glow-color);
+    }
+
+    /* Cursor Glow Effect */
+    .cursor-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(110, 243, 255, 0.15) 0%,
+        rgba(110, 243, 255, 0.05) 40%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: 9;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Hand Symbol */
+    .hands {
+      position: absolute;
+      bottom: 5%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10%;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .hand {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(45deg, var(--accent-color), var(--accent-blue));
+      mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"/></svg>');
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"/></svg>');
+      mask-size: contain;
+      -webkit-mask-size: contain;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      filter: blur(2px);
+      animation: floating 10s infinite ease-in-out;
+      transform-style: preserve-3d;
+    }
+
+    /* Cursor Trail Effect */
+    .cursor-trail {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--accent-blue);
+      pointer-events: none;
+      opacity: 0.7;
+      z-index: 9;
+      box-shadow: 0 0 10px var(--glow-color);
+      transform: translate(-50%, -50%);
+      transition: opacity 0.5s ease;
+    }
+
+    /* Animations */
+    @keyframes floating {
+      0% { transform: translateY(0px) rotate(0deg) translateZ(0); }
+      50% { transform: translateY(-20px) rotate(5deg) translateZ(20px); }
+      100% { transform: translateY(0px) rotate(0deg) translateZ(0); }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; filter: brightness(1); }
+      50% { opacity: 0.8; filter: brightness(1.2); }
+      100% { opacity: 1; filter: brightness(1); }
+    }
+
+    @keyframes rotate3d {
+      0% { transform: rotateX(0deg) rotateY(0deg) translateZ(0); }
+      50% { transform: rotateX(10deg) rotateY(10deg) translateZ(20px); }
+      100% { transform: rotateX(0deg) rotateY(0deg) translateZ(0); }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.3); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .button-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .glass-button {
+        width: 100%;
+        max-width: 300px;
+        height: 150px;
+      }
+
+      .hands {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Cursor Glow Effect -->
+  <div class="cursor-glow"></div>
+  
+  <!-- Particles Container -->
+  <div id="particles-container"></div>
+  
+  <!-- 3D Shapes Container -->
+  <div id="shapes-container"></div>
+  
+  <!-- Cursor Followers Container -->
+  <div id="cursor-followers-container"></div>
+  
+  <!-- Content Container -->
+  <div class="content-container">
+    <h1>English Phonetics Learning</h1>
+    <p>Master pronunciation with interactive tools and resources</p>
+    
+    <div class="button-container">
+      <a href="./phonetic-symbols (1)/index.html" class="glass-button"> 
+        <div class="button-icon">/æ/</div>
+        <div class="button-text">Phonetic Symbols</div>
+      </a>
+      
+       <a href="./quiz-app/index.html" class="glass-button"> 
+        <div class="button-icon">?</div>
+        <div class="button-text">Quiz App</div>
+      </a>
+      
+      <a href="./phonetic-flashcards/index.html" class="glass-button"> 
+        <div class="button-icon">ツ</div>
+        <div class="button-text">Flashcard App</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Hands Symbols for Background Effect -->
+  <div class="hands">
+    <div class="hand"></div>
+    <div class="hand" style="animation-delay: 1.5s;"></div>
+  </div>
+
+  <script>
+    // Track mouse position
+    let mouseX = 0;
+    let mouseY = 0;
+    let prevMouseX = 0;
+    let prevMouseY = 0;
+    let mouseSpeed = 0;
+    
+    // Create cursor glow effect
+    const cursorGlow = document.querySelector('.cursor-glow');
+    
+    // Create cursor followers container
+    const cursorFollowersContainer = document.getElementById('cursor-followers-container');
+    
+    // Phonetic symbols for cursor followers
+    const phonetics = ['/æ/', '/e/', '/ʊ/', '/ɪ/', '/i:/', '/ʌ/', '/ɒ/', '/u:/', '/ɔ:/', '/ɑ:/', '/p/', '/b/', '/t/', '/d/', '/k/', '/ʃ/', '/ʒ/', '/θ/'];
+    const container = document.body;
+    const shapesContainer = document.getElementById('shapes-container');
+    
+    // Create cursor following phonetic symbols
+    const cursorFollowers = [];
+    for (let i = 0; i < 8; i++) {
+      const follower = createCursorFollower(i);
+      cursorFollowers.push(follower);
+    }
+    
+    // Create floating phonetic symbols
+    for (let i = 0; i < 20; i++) {
+      createFloatingSymbol();
+    }
+    
+    // Create 3D shapes
+    for (let i = 0; i < 15; i++) {
+      createShape();
+    }
+    
+    // Create cursor follower
+    function createCursorFollower(index) {
+      const follower = document.createElement('div');
+      follower.className = 'cursor-follower';
+      
+      // Random phonetic symbol
+      const randomSymbol = phonetics[Math.floor(Math.random() * phonetics.length)];
+      follower.innerText = randomSymbol;
+      
+      // Random size
+      const size = Math.random() * 1.5 + 1;
+      follower.style.fontSize = `${size}rem`;
+      
+      // Random color
+      const hue = Math.random() * 60 + 180; // Blue to purple range
+      follower.style.color = `hsl(${hue}, 100%, 80%)`;
+      follower.style.textShadow = `0 0 10px hsl(${hue}, 100%, 70%)`;
+      
+      // Set initial position off-screen
+      follower.style.left = '-100px';
+      follower.style.top = '-100px';
+      
+      // Set delay based on index
+      follower.delay = index * 2;
+      follower.offset = {
+        x: Math.random() * 100 - 50,
+        y: Math.random() * 100 - 50
+      };
+      
+      cursorFollowersContainer.appendChild(follower);
+      return follower;
+    }
+    
+    function createShape() {
+      const shapeTypes = ['triangle', 'gem', 'circle'];
+      const shapeType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+      
+      const shape = document.createElement('div');
+      shape.className = `shape ${shapeType}`;
+      
+      // Random position
+      const xPos = Math.random() * 100;
+      const yPos = Math.random() * 100;
+      shape.style.left = `${xPos}%`;
+      shape.style.top = `${yPos}%`;
+      
+      // Random size
+      const sizeMultiplier = Math.random() * 1.5 + 0.5;
+      
+      if (shapeType === 'triangle') {
+        const borderSize = 30 * sizeMultiplier;
+        shape.style.borderLeft = `${borderSize}px solid transparent`;
+        shape.style.borderRight = `${borderSize}px solid transparent`;
+        shape.style.borderBottom = `${borderSize * 1.6}px solid var(--pink-glow)`;
+      } else if (shapeType === 'gem') {
+        const size = 40 * sizeMultiplier;
+        shape.style.width = `${size}px`;
+        shape.style.height = `${size}px`;
+      } else if (shapeType === 'circle') {
+        const size = 30 * sizeMultiplier;
+        shape.style.width = `${size}px`;
+        shape.style.height = `${size}px`;
+      }
+      
+      // Random opacity
+      const opacity = Math.random() * 0.4 + 0.1;
+      shape.style.opacity = opacity;
+      
+      // Animation duration and delay
+      const duration = Math.random() * 15 + 10;
+      const delay = Math.random() * 5;
+      shape.style.animation = `floating ${duration}s ease-in-out ${delay}s infinite`;
+      
+      // Random Z translation for 3D effect
+      const zTranslate = Math.random() * 100 - 50;
+      shape.style.transform = `translateZ(${zTranslate}px) ${shape.style.transform || ''}`;
+      
+      // Store original position for cursor interaction
+      shape.originalPosition = { x: xPos, y: yPos };
+      
+      shapesContainer.appendChild(shape);
+      return shape;
+    }
+    
+    function createFloatingSymbol() {
+      const symbol = document.createElement('div');
+      symbol.className = 'floating-symbol';
+      
+      // Random phonetic symbol
+      const randomSymbol = phonetics[Math.floor(Math.random() * phonetics.length)];
+      symbol.innerText = randomSymbol;
+      
+      // Random position
+      const xPos = Math.random() * 100;
+      const yPos = Math.random() * 100;
+      symbol.style.left = `${xPos}%`;
+      symbol.style.top = `${yPos}%`;
+      
+      // Random size
+      const size = Math.random() * 2 + 1;
+      symbol.style.fontSize = `${size}rem`;
+      
+      // Random opacity
+      const opacity = Math.random() * 0.6 + 0.2;
+      symbol.style.opacity = opacity;
+      
+      // Animation duration and delay
+      const duration = Math.random() * 10 + 10;
+      const delay = Math.random() * 5;
+      symbol.style.animation = `floating ${duration}s ease-in-out ${delay}s infinite`;
+      
+      // Random Z translation for 3D effect
+      const zTranslate = Math.random() * 100 - 50;
+      symbol.style.transform = `translateZ(${zTranslate}px)`;
+      
+      // Store original position for cursor interaction
+      symbol.originalPosition = { x: xPos, y: yPos };
+      
+      container.appendChild(symbol);
+      return symbol;
+    }
+    
+    // Create particles
+    const particlesContainer = document.getElementById('particles-container');
+    const particleCount = 150; // Increased from 50 to 150
+    const particles = [];
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = createParticle();
+      particles.push(particle);
+    }
+    
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // Random position
+      const xPos = Math.random() * 100;
+      const yPos = Math.random() * 100;
+      particle.style.left = `${xPos}%`;
+      particle.style.top = `${yPos}%`;
+      
+      // Random size
+      const size = Math.random() * 5 + 2;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Random opacity
+      const opacity = Math.random() * 0.5 + 0.2;
+      particle.style.opacity = opacity;
+      
+      // Random glow color
+      if (Math.random() > 0.5) {
+        particle.style.boxShadow = `0 0 10px 2px var(--pink-glow)`;
+        particle.style.backgroundColor = `var(--accent-color)`;
+      }
+      
+      // Store velocity for cursor interaction
+      particle.velocity = {
+        x: (Math.random() - 0.5) * 0.5,
+        y: (Math.random() - 0.5) * 0.5
+      };
+      
+      // Store original position
+      particle.originalPosition = { x: xPos, y: yPos };
+      
+      particlesContainer.appendChild(particle);
+      return particle;
+    }
+    
+    // Create cursor trail effect
+    function createCursorTrail(x, y) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = `${x}px`;
+      trail.style.top = `${y}px`;
+      
+      // Random size
+      const size = Math.random() * 8 + 5;
+      trail.style.width = `${size}px`;
+      trail.style.height = `${size}px`;
+      
+      // Random color
+      const useBlue = Math.random() > 0.5;
+      if (useBlue) {
+        trail.style.backgroundColor = 'var(--accent-blue)';
+        trail.style.boxShadow = '0 0 10px var(--glow-color)';
+      } else {
+        trail.style.backgroundColor = 'var(--accent-color)';
+        trail.style.boxShadow = '0 0 10px var(--pink-glow)';
+      }
+      
+      document.body.appendChild(trail);
+      
+      // Animate and remove
+      setTimeout(() => {
+        trail.style.animation = 'fadeOut 0.5s forwards';
+        setTimeout(() => {
+          trail.remove();
+        }, 500);
+      }, 10);
+    }
+    
+    // Mouse move event
+    document.addEventListener('mousemove', (e) => {
+      // Update mouse position
+      prevMouseX = mouseX;
+      prevMouseY = mouseY;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      // Calculate mouse speed
+      const dx = mouseX - prevMouseX;
+      const dy = mouseY - prevMouseY;
+      mouseSpeed = Math.sqrt(dx * dx + dy * dy);
+      
+      // Update cursor glow
+      cursorGlow.style.left = `${mouseX}px`;
+      cursorGlow.style.top = `${mouseY}px`;
+      cursorGlow.style.opacity = '1';
+      
+      // Create cursor trail if mouse is moving fast
+      if (mouseSpeed > 5) {
+        createCursorTrail(mouseX, mouseY);
+      }
+      
+      // Update 3D effect on content
+      const contentContainer = document.querySelector('.content-container');
+      const xOffset = (mouseX / window.innerWidth - 0.5) * 20;
+      const yOffset = (mouseY / window.innerHeight - 0.5) * 20;
+      contentContainer.style.transform = `perspective(1000px) rotateX(${-yOffset/2}deg) rotateY(${xOffset/2}deg)`;
+      
+      // Update title and paragraph
+      const title = document.querySelector('h1');
+      const paragraph = document.querySelector('p');
+      title.style.transform = `translateX(${xOffset/4}px) translateY(${yOffset/4}px)`;
+      paragraph.style.transform = `translateX(${xOffset/6}px) translateY(${yOffset/6}px)`;
+      
+      // Update buttons
+      const buttons = document.querySelectorAll('.glass-button');
+      buttons.forEach((button, index) => {
+        const buttonRect = button.getBoundingClientRect();
+        const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+        const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+        
+        // Calculate distance from mouse to button center
+        const distX = mouseX - buttonCenterX;
+        const distY = mouseY - buttonCenterY;
+        const distance = Math.sqrt(distX * distX + distY * distY);
+        
+        // Apply 3D effect based on mouse position relative to button
+        const maxDistance = 300;
+        if (distance < maxDistance) {
+          const intensity = 1 - distance / maxDistance;
+          const rotateX = (mouseY - buttonCenterY) / 20 * intensity;
+          const rotateY = (buttonCenterX - mouseX) / 20 * intensity;
+          const translateZ = 20 * intensity;
+          
+          button.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+          
+          // Increase glow based on proximity
+          button.style.boxShadow = `
+            0 15px 35px rgba(0, 0, 0, 0.2), 
+            0 0 ${15 + intensity * 20}px var(--glow-color),
+            0 0 ${30 + intensity * 30}px var(--pink-glow)
+          `;
+        } else {
+          button.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+          button.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+        }
+      });
+    });
+    
+    // Mouse leave event
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.style.opacity = '0';
+    });
+    
+    // Animation loop for cursor followers and interactive elements
+    function animateElements() {
+      // Update cursor followers
+      cursorFollowers.forEach((follower, index) => {
+        const delay = follower.delay;
+        const offsetX = follower.offset.x;
+        const offsetY = follower.offset.y;
+        
+        // Calculate target position with delay and offset
+        const targetX = mouseX + offsetX;
+        const targetY = mouseY + offsetY;
+        
+        // Get current position
+        const rect = follower.getBoundingClientRect();
+        let currentX = rect.left + rect.width / 2;
+        let currentY = rect.top + rect.height / 2;
+        
+        // Calculate new position with easing
+        const easing = 0.05 + (index * 0.01);
+        const newX = currentX + (targetX - currentX) * easing;
+        const newY = currentY + (targetY - currentY) * easing;
+        
+        // Apply new position
+        follower.style.left = `${newX}px`;
+        follower.style.top = `${newY}px`;
+        
+        // Calculate angle to cursor for rotation
+        const angle = Math.atan2(targetY - currentY, targetX - currentX) * 180 / Math.PI;
+        follower.style.transform = `rotate(${angle}deg) scale(${1 + mouseSpeed * 0.01})`;
+        
+        // Adjust opacity based on mouse speed
+        follower.style.opacity = Math.min(0.7 + mouseSpeed * 0.01, 1);
+      });
+      
+      // Update particles based on cursor position
+      particles.forEach(particle => {
+        // Get particle position
+        const rect = particle.getBoundingClientRect();
+        const particleX = rect.left + rect.width / 2;
+        const particleY = rect.top + rect.height / 2;
+        
+        // Calculate distance from cursor
+        const dx = mouseX - particleX;
+        const dy = mouseY - particleY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // Cursor influence radius
+        const radius = 150;
+        
+        if (distance < radius) {
+          // Calculate repulsion force
+          const force = (1 - distance / radius) * 2;
+          
+          // Apply force to velocity
+          particle.velocity.x -= dx / distance * force;
+          particle.velocity.y -= dy / distance * force;
+          
+          // Increase particle size and glow based on proximity
+          const scale = 1 + (1 - distance / radius) * 0.5;
+          particle.style.transform = `scale(${scale})`;
+          particle.style.opacity = Math.min(0.8, parseFloat(particle.style.opacity) + 0.2);
+        } else {
+          // Gradually return to original size
+          particle.style.transform = 'scale(1)';
+        }
+        
+        // Apply velocity with damping
+        particle.velocity.x *= 0.98;
+        particle.velocity.y *= 0.98;
+        
+        // Get current position as percentage
+        let currentX = parseFloat(particle.style.left) || 0;
+        let currentY = parseFloat(particle.style.top) || 0;
+        
+        // Remove % sign if present
+        currentX = currentX.toString().includes('%') ? currentX : currentX + '%';
+        currentY = currentY.toString().includes('%') ? currentY : currentY + '%';
+        
+        // Convert to number
+        currentX = parseFloat(currentX);
+        currentY = parseFloat(currentY);
+        
+        // Apply velocity
+        currentX += particle.velocity.x * 0.1;
+        currentY += particle.velocity.y * 0.1;
+        
+        // Boundary check
+        if (currentX < 0) currentX = 0;
+        if (currentX > 100) currentX = 100;
+        if (currentY < 0) currentY = 0;
+        if (currentY > 100) currentY = 100;
+        
+        // Apply new position
+        particle.style.left = `${currentX}%`;
+        particle.style.top = `${currentY}%`;
+      });
+      
+      // Update floating symbols based on cursor
+      const floatingSymbols = document.querySelectorAll('.floating-symbol');
+      floatingSymbols.forEach(symbol => {
+        // Get symbol position
+        const rect = symbol.getBoundingClientRect();
+        const symbolX = rect.left + rect.width / 2;
+        const symbolY = rect.top + rect.height / 2;
+        
+        // Calculate distance from cursor
+        const dx = mouseX - symbolX;
+        const dy = mouseY - symbolY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // Cursor influence radius
+        const radius = 200;
+        
+        if (distance < radius) {
+          // Calculate attraction force
+          const force = (1 - distance / radius) * 2;
+          
+          // Get original position
+          const originalX = symbol.originalPosition.x;
+          const originalY = symbol.originalPosition.y;
+          
+          // Calculate new position with slight attraction to cursor
+          const newX = originalX + (dx / window.innerWidth) * 10 * force;
+          const newY = originalY + (dy / window.innerHeight) * 10 * force;
+          
+          // Apply new position with transition
+          symbol.style.left = `${newX}%`;
+          symbol.style.top = `${newY}%`;
+          
+          // Increase glow based on proximity
+          const glowIntensity = 8 + (1 - distance / radius) * 12;
+          symbol.style.textShadow = `0 0 ${glowIntensity}px var(--glow-color)`;
+          symbol.style.opacity = Math.min(0.8, parseFloat(symbol.style.opacity) + 0.2);
+        } else {
+          // Return to original position and glow
+          const originalX = symbol.originalPosition.x;
+          const originalY = symbol.originalPosition.y;
+          
+          symbol.style.left = `${originalX}%`;
+          symbol.style.top = `${originalY}%`;
+          symbol.style.textShadow = '0 0 8px var(--glow-color)';
+        }
+      });
+      
+      // Update shapes based on cursor
+      const shapes = document.querySelectorAll('.shape');
+      shapes.forEach(shape => {
+        // Get shape position
+        const rect = shape.getBoundingClientRect();
+        const shapeX = rect.left + rect.width / 2;
+        const shapeY = rect.top + rect.height / 2;
+        
+        // Calculate distance from cursor
+        const dx = mouseX - shapeX;
+        const dy = mouseY - shapeY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // Cursor influence radius
+        const radius = 250;
+        
+        if (distance < radius) {
+          // Calculate repulsion force (shapes move away from cursor)
+          const force = (1 - distance / radius) * 3;
+          
+          // Get original position
+          const originalX = shape.originalPosition.x;
+          const originalY = shape.originalPosition.y;
+          
+          // Calculate new position with repulsion from cursor
+          const newX = originalX - (dx / window.innerWidth) * 15 * force;
+          const newY = originalY - (dy / window.innerHeight) * 15 * force;
+          
+          // Apply new position with transition
+          shape.style.left = `${newX}%`;
+          shape.style.top = `${newY}%`;
+          
+          // Increase glow based on proximity
+          const glowIntensity = 20 + (1 - distance / radius) * 30;
+          if (shape.classList.contains('triangle')) {
+            shape.style.borderBottomColor = `rgba(252, 57, 255, ${0.5 + (1 - distance / radius) * 0.5})`;
+            shape.style.boxShadow = `0 0 ${glowIntensity}px var(--pink-glow)`;
+          } else if (shape.classList.contains('gem')) {
+            shape.style.backgroundColor = `rgba(110, 243, 255, ${0.5 + (1 - distance / radius) * 0.5})`;
+            shape.style.boxShadow = `0 0 ${glowIntensity}px var(--glow-color)`;
+          } else if (shape.classList.contains('circle')) {
+            shape.style.backgroundColor = `rgba(252, 57, 255, ${0.5 + (1 - distance / radius) * 0.5})`;
+            shape.style.boxShadow = `0 0 ${glowIntensity}px var(--pink-glow)`;
+          }
+          
+          shape.style.opacity = Math.min(0.8, parseFloat(shape.style.opacity) + 0.2);
+        } else {
+          // Return to original position and glow
+          const originalX = shape.originalPosition.x;
+          const originalY = shape.originalPosition.y;
+          
+          shape.style.left = `${originalX}%`;
+          shape.style.top = `${originalY}%`;
+          
+          if (shape.classList.contains('triangle')) {
+            shape.style.borderBottomColor = 'var(--pink-glow)';
+            shape.style.boxShadow = '0 0 20px var(--pink-glow)';
+          } else if (shape.classList.contains('gem')) {
+            shape.style.backgroundColor = 'var(--accent-blue)';
+            shape.style.boxShadow = '0 0 20px var(--glow-color)';
+          } else if (shape.classList.contains('circle')) {
+            shape.style.backgroundColor = 'var(--accent-color)';
+            shape.style.boxShadow = '0 0 15px var(--pink-glow)';
+          }
+        }
+      });
+      
+      requestAnimationFrame(animateElements);
+    }
+    
+    // Start animation loop
+    animateElements();
+  </script>
+</body>
+</html>
