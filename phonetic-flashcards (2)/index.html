@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonetic Symbols Flashcards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Phonetic Symbols Flashcards</h1>
+            <div class="header-controls">
+                <span class="card-counter" id="cardCounter">Card 1 of 9</span>
+                <button class="btn btn--outline" id="resetBtn">Reset Session</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Flashcard Container -->
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="card-content">
+                                <h2 class="question" id="questionText">Click to start!</h2>
+                                <p class="instruction">Click anywhere on the card to reveal the answer</p>
+                            </div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="card-content">
+                                <h3 class="answer-label">Answer:</h3>
+                                <p class="answer" id="answerText">Click to start!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="navigation">
+                <button class="btn btn--primary" id="prevBtn">Previous</button>
+                <button class="btn btn--primary" id="nextBtn">Next</button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn--secondary" id="addCardBtn">Add New Card</button>
+                <button class="btn btn--outline" id="shuffleBtn">Shuffle Cards</button>
+            </div>
+        </main>
+
+        <!-- Add Card Modal -->
+        <div class="modal" id="addCardModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Flashcard</h3>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label" for="newQuestion">Question:</label>
+                        <textarea class="form-control" id="newQuestion" rows="3" placeholder="Enter your question here..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newAnswer">Answer:</label>
+                        <textarea class="form-control" id="newAnswer" rows="4" placeholder="Enter the answer here..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn--outline" id="cancelAdd">Cancel</button>
+                    <button class="btn btn--primary" id="saveCard">Save Card</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Backdrop -->
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
