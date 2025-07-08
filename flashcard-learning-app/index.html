@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashCard Learning App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>FlashCard Learning</h1>
+            <nav class="nav">
+                <button class="btn btn--secondary" onclick="window.location.href='index.html'" target="_blank">
+                    🏠 Home
+                </button>
+                <button class="btn btn--primary" id="addCardBtn">
+                    ➕ Add Flashcard
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Study View -->
+            <div class="study-view" id="studyView">
+                <div class="card-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="card-content">
+                                    <h3 class="card-title">Question</h3>
+                                    <p class="card-text" id="questionText">Click on a card to start studying</p>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="card-content">
+                                    <h3 class="card-title">Answer</h3>
+                                    <p class="card-text" id="answerText">Answer will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Controls -->
+                <div class="card-controls">
+                    <button class="btn btn--secondary" id="prevBtn" disabled>
+                        ← Previous
+                    </button>
+                    <div class="card-info">
+                        <span class="card-counter" id="cardCounter">0 / 0</span>
+                        <div class="card-category" id="cardCategory">Category</div>
+                    </div>
+                    <button class="btn btn--secondary" id="nextBtn" disabled>
+                        Next →
+                    </button>
+                </div>
+
+                <!-- Instructions -->
+                <div class="instructions">
+                    <p>Click on the card to flip it and reveal the answer</p>
+                    <p>Use the navigation buttons or keyboard arrows to move between cards</p>
+                </div>
+            </div>
+
+            <!-- Add Card Form -->
+            <div class="add-card-form" id="addCardForm" style="display: none;">
+                <div class="form-container">
+                    <h2>Add New Flashcard</h2>
+                    <form id="newCardForm">
+                        <div class="form-group">
+                            <label for="newQuestion" class="form-label">Question:</label>
+                            <textarea 
+                                id="newQuestion" 
+                                class="form-control" 
+                                rows="3" 
+                                placeholder="Enter your question here..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newAnswer" class="form-label">Answer:</label>
+                            <textarea 
+                                id="newAnswer" 
+                                class="form-control" 
+                                rows="3" 
+                                placeholder="Enter the answer here..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newCategory" class="form-label">Category:</label>
+                            <select id="newCategory" class="form-control">
+                                <option value="Custom">Custom</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Science">Science</option>
+                                <option value="Geography">Geography</option>
+                                <option value="History">History</option>
+                                <option value="Language">Language</option>
+                                <option value="Literature">Literature</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--secondary" id="cancelBtn">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn--primary">
+                                Add Flashcard
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 FlashCard Learning App</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
