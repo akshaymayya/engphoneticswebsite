@@ -1,0 +1,5 @@
+[[headers]]
+  for = "/quiz-app/questions.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "application/json"
