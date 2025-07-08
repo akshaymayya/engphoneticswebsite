@@ -282,7 +282,7 @@
   </div>
 
   <script>
-    // Create animated stars
+    
     function createStars() {
       const starsContainer = document.getElementById('stars');
       const starCount = 50;
@@ -297,7 +297,7 @@
       }
     }
 
-    // Add interactive hover effects
+    // hover effects
     document.querySelectorAll('.glass-button').forEach(button => {
       button.addEventListener('mouseenter', function() {
         this.style.background = 'rgba(255, 255, 255, 0.15)';
@@ -311,7 +311,7 @@
     // Initialize stars on page load
     window.addEventListener('load', createStars);
 
-    // Add subtle parallax effect to background elements
+    
     document.addEventListener('mousemove', function(e) {
       const elements = document.querySelectorAll('.bg-element');
       const x = e.clientX / window.innerWidth;
