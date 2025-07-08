@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonetic Flashcards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar hidden" id="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">Phonetic Flashcards</h1>
+            <div class="nav-actions">
+                <span class="user-welcome hidden" id="userWelcome"></span>
+                <button class="btn btn--secondary btn--sm" id="homeBtn">Home</button>
+                <button class="btn btn--secondary btn--sm" id="addCardBtn">Add Card</button>
+                <button class="btn btn--outline btn--sm" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Screen -->
+    <div class="screen active" id="loginScreen">
+        <div class="login-container">
+            <div class="login-card">
+                <h1>Welcome to Phonetic Flashcards</h1>
+                <p>Enter your username to start learning</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div class="screen" id="dashboardScreen">
+        <div class="dashboard-container">
+            <div class="welcome-section">
+                <h2>Ready to Study?</h2>
+                <p>Choose how you'd like to practice your phonetic symbols</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalCards">9</h3>
+                    <p>Total Cards</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="userCards">0</h3>
+                    <p>Your Cards</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="studyProgress">0%</h3>
+                    <p>Progress</p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn--primary btn--lg" id="startStudyBtn">Start Studying</button>
+                <button class="btn btn--secondary btn--lg" id="reviewCardsBtn">Review My Cards</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Study Screen -->
+    <div class="screen" id="studyScreen">
+        <div class="study-container">
+            <div class="study-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="currentCardNumber">1</span> of <span id="totalCardCount">9</span>
+                </div>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="card-face card-front">
+                        <div class="card-content">
+                            <h3>Question</h3>
+                            <p id="questionText">Click "Start Studying" to begin</p>
+                            <div class="flip-hint">Click to reveal answer</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-content">
+                            <h3>Answer</h3>
+                            <p id="answerText">Answer will appear here</p>
+                            <div class="flip-hint">Click to see question again</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="study-controls">
+                <button class="btn btn--outline" id="prevBtn">Previous</button>
+                <button class="btn btn--secondary" id="shuffleBtn">Shuffle</button>
+                <button class="btn btn--outline" id="nextBtn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Card Screen -->
+    <div class="screen" id="addCardScreen">
+        <div class="add-card-container">
+            <div class="add-card-form">
+                <h2>Add New Flashcard</h2>
+                <form id="addCardForm">
+                    <div class="form-group">
+                        <label for="newQuestion" class="form-label">Question</label>
+                        <textarea id="newQuestion" class="form-control" placeholder="Enter your question here..." rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="newAnswer" class="form-label">Answer</label>
+                        <textarea id="newAnswer" class="form-control" placeholder="Enter the answer here..." rows="4" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn--outline" id="cancelAddBtn">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Add Card</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- User Cards List -->
+            <div class="user-cards-section">
+                <h3>Your Cards</h3>
+                <div id="userCardsList" class="user-cards-list">
+                    <p class="empty-state">No custom cards yet. Add your first card above!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast hidden" id="successToast">
+        <div class="toast-content">
+            <span id="toastMessage">Card added successfully!</span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
